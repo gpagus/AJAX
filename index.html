@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gas Stations of Spain</title>
+    <link rel="stylesheet" href="./src/css/style.css">
+    <script src="./src/js/script.js" defer></script>
+</head>
+
+<body>
+    <main>
+        <h1>Search for all the gas stations in Spain</h1>
+
+        <div class="filters">
+            <select id="province-select">
+                <option value="">Select province</option>
+            </select>
+
+            <select id="municipality-select" disabled>
+                <option value="">Select municipality</option>
+            </select>
+
+            <select id="fuel-type">
+                <option value="">Fuel type</option>
+                <option value="Precio_x0020_Gasolina_x0020_95_x0020_E5">'Gasolina 95 E5'</option>
+                <option value="Precio_x0020_Gasoleo_x0020_A">'Diésel A'</option>
+            </select>
+
+            <label>
+                <input type="checkbox" id="open-now-check">Currently open
+            </label>
+
+            <button id="search-btn">Search🔎</button>
+        </div>
+
+        <div id="stations-list"></div>
+    </main>
+</body>
+</html>
