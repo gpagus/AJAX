@@ -1,37 +1,242 @@
-*{
-    padding: 0;
+:root {
+    --background-color: #f7f9fc;
+    --text-color: #2c3e50;
+    --heading-color: #34495e;
+    --light-text-color: #7f8c8d;
+    --input-bg-color: #ecf0f1;
+    --white: #ffffff;
+    --primary-accent: #e74c3c;
+    --secondary-accent: #f1c40f;
+    --shadow-color: rgba(231, 76, 60, 0.1);
+}
+
+* {
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f2f2f2;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.filters {
+header {
+    margin-bottom: 50px;
+}
+
+h1 {
+    font-size: 2.5em;
+    font-weight: 300;
+    letter-spacing: -1px;
+    color: var(--heading-color);
+    border-bottom: 3px solid var(--primary-accent);
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+}
+
+#form {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--light-text-color);
+    font-size: 14px;
+}
+
+select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 25px;
+    border: none;
+    background-color: var(--input-bg-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 16px;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23e74c3c%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px top 50%;
+    background-size: 12px auto;
+}
+
+select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.3);
+}
+
+.checkbox-container {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    align-items: center;
+    margin-bottom: 25px;
 }
-.filters select, .filters input {
-    padding: 5px;
+
+.checkbox-container label {
+    margin: 0 0 0 10px;
+    cursor: pointer;
 }
-#stations-list {
-    display: flex;
-    gap: 15px;
-    flex-direction: column;
-}
-.station-card {
-    border: 1px solid grey;
-    padding: 10px;
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    background-color: var(--input-bg-color);
     border-radius: 5px;
+    cursor: pointer;
+    position: relative;
 }
-.no-results {
-    color: grey;
+
+input[type="checkbox"]:checked:after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 12px;
+    border: solid var(--primary-accent);
+    border-width: 0 3px 3px 0;
+    top: 2px;
+    left: 8px;
+    transform: rotate(45deg);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-accent);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #c0392b;
+}
+
+
+#gas-stations-list {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    min-height: 300px;
+    display: grid;
+    gap: 30px;
+}
+
+.station {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.station:hover {
+    transform: translateY(-3px);
+}
+
+.station h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: var(--secondary-accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.station p {
+    color: var(--text-color);
+    margin: 15px 0;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.station p strong {
+    color: var(--heading-color);
+    font-weight: 500;
+}
+
+.station .price {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary-accent);
+    margin-top: 15px;
+}
+
+#gas-stations-list p {
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 10px 0;
+    font-size: 16px;
+}
+
+footer {
+    background-color: var(--white);
+    border-top: 2px solid var(--primary-accent);
     text-align: center;
     padding: 20px;
+    margin-top: 40px;
+    box-shadow: 0 -5px 15px var(--shadow-color);
+}
+
+footer p {
+    color: var(--light-text-color);
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    #form, #gas-stations-list {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .station h3 {
+        font-size: 20px;
+    }
+
+    .station p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    button {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .station h3 {
+        font-size: 18px;
+    }
+
+    .station p {
+        font-size: 14px;
+    }
 }

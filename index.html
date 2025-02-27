@@ -3,38 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gas Stations of Spain</title>
+    <title>Gasolineras API⛽</title>
     <link rel="stylesheet" href="./src/css/style.css">
     <script src="./src/js/script.js" defer></script>
 </head>
-
 <body>
+    <header>
+        <h1>Gasolineras España</h1>
+    </header>
     <main>
-        <h1>Search for all the gas stations in Spain</h1>
+        <section id="form">
+            <label for="province">Provincia</label>
+            <select name="province" id="province"></select>
 
-        <div class="filters">
-            <select id="province-select">
-                <option value="">Select province</option>
+            <label for="municipality">Municipio</label>
+            <select name="municipality" id="municipality">
+                <option selected disabled>Selecciona una opción</option>
             </select>
 
-            <select id="municipality-select" disabled>
-                <option value="">Select municipality</option>
-            </select>
+            <label for="fuel-type">Tipo de combustible</label>
+            <select name="fuel-type" id="fuel-type"></select>
 
-            <select id="fuel-type">
-                <option value="">Fuel type</option>
-                <option value="Precio_x0020_Gasolina_x0020_95_x0020_E5">'Gasolina 95 E5'</option>
-                <option value="Precio_x0020_Gasoleo_x0020_A">'Diésel A'</option>
-            </select>
+            <div class="checkbox-container">
+                <input type="checkbox" name="open" id="open">
+                <label for="open">Abierto ahora</label>
+            </div>
 
-            <label>
-                <input type="checkbox" id="open-now-check">Currently open
-            </label>
+            <button id="search" type="button">Buscar</button>
+        </section>
 
-            <button id="search-btn">Search🔎</button>
-        </div>
-
-        <div id="stations-list"></div>
+        <section id="gas-stations-list">
+            <p>Selecciona una provincia, un municipio y el tipo de combustible para ver resultados</p>
+        </section>
     </main>
+    <footer>
+        <p>El funcionamiento de esta aplicación se basa en la integración con la API de Gasolineras, proporcionada por el Gobierno de España.</p>
+    </footer>
 </body>
 </html>
